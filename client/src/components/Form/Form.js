@@ -35,9 +35,19 @@ const Form = ({ currentId, setCurrentId }) => {
     } else {
       dispatch(createPost(postData));
     }
+    clear();
   };
 
-  const clear = () => {};
+  const clear = () => {
+    setCurrentId(null);
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
+  };
   return (
     <Paper className={classes.paper}>
       <form
@@ -46,7 +56,9 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">Creating a memory</Typography>
+        <Typography variant="h6">
+          {currentId ? "Editing" : "Creating"} a memory
+        </Typography>
         <TextField
           name="creator"
           variant="outlined"
@@ -81,7 +93,9 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Tags"
           fullWidth
           value={postData.tags}
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
+          onChange={(e) =>
+            setPostData({ ...postData, tags: e.target.value.split(",") })
+          }
         />
         <div className={classes.fileInput}>
           <Filebase

@@ -15,8 +15,12 @@ app.use(cors());
 
 app.use("/posts", postRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Hello Welcome to memories API...");
+});
+
 // const CONNECTION_URL =
-//   "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false";
+//   "mongodb+srv://nkayilovette-memories-db:nkayilovette-memories-db@cluster0.lmsx3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
 
 mongoose

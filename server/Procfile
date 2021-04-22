@@ -1,3 +1,1 @@
 web: npm run start
-
-mongodb+srv://nkayilovette-memories-db:nkayilovette-memories-db@cluster0.lmsx3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
